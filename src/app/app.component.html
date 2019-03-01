@@ -1,2 +1,3 @@
-<app-header></app-header>
-<app-recipes></app-recipes>
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<app-posts *ngIf="loadedFeature === 'post'"></app-posts>
+<app-blog *ngIf="loadedFeature !== 'post'"></app-blog>

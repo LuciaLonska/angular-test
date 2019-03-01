@@ -1,4 +1,18 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Project</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#" (click)="onSelect('post')">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#" (click)="onSelect('blog')">Blog</a>
+      <a class="nav-item nav-link" href="#" (click)="onSelect('blog')">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!--<nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <a href="#" class="navbar-brand">Project</a>
@@ -10,4 +24,4 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav>-->

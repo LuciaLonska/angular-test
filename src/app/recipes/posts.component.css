@@ -1,0 +1,80 @@
+.card{
+  width: 50%;
+  margin: auto;
+  border: 1px solid #eee;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+  align-items: baseline;
+}
+
+.heading{
+  order: 1;
+  flex-grow: 1;
+  text-align: left;
+}
+
+p{
+  padding: 15px;
+}
+
+.edit{
+  order: 2;
+  flex-grow: 1 ;
+  width: 50%;
+}
+
+.edit ul li{
+  list-style: none;
+  display: inline-block;
+  float: right;
+}
+
+ul li a{
+  padding: 10px;
+}
+
+.comments{
+  order: 1;
+  flex-grow: 1;
+}
+
+.comments ul li{
+  list-style: none;
+}
+
+.ok-btn{
+  order: 2;
+  flex-grow: 2;
+  text-align: center;
+}
+
+.ok-btn a{
+  padding: 5px 10px 5px 10px ;
+  background: green;
+  color: white;
+  border-radius: 3px;
+}
+
+.ok-btn a:hover,
+.ok-btn a:focus{
+ text-decoration: none;
+ background: #13a713;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+
+
