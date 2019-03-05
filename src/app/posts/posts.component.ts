@@ -13,16 +13,15 @@ export class PostsComponent implements OnInit {
   posts: Post[] = [];
   httpClient: HttpClient = null;
 
-  constructor(httpClie: HttpClient) {
-    this.httpClient = httpClie
-    this.get_products()
+  constructor(httpClient: HttpClient) {
+    this.httpClient = httpClient
   }
 
   delete_post(postId: string){
      this.httpClient
      .delete(this.baseUrl + '/posts/' + postId)
     .subscribe((response: any) => {
-      this.posts = this.posts.filter(r => r.id != postId)
+      this.posts = this.posts.filter((r) => {r.id != postId})
     })
   }
 
@@ -30,10 +29,10 @@ export class PostsComponent implements OnInit {
     console.log('POST WAS EDITED')
   }
 
-  download_comments(id:string){
+  /*download_comments(id:string){
     this.httpClient
     .get(this.baseUrl + '/posts/' + id + '/comments')
-    .subscribe((jsondata: any[])=>{
+    .subscribe((response: any[])=>{
       const post = this.posts.find(p => p.id == id)
       const updatedPost = new Post(post.userId,post.id,post.title,post.body, ['cffgh', 'jhsgaxh', 'hshh'])
       const posts =  this.posts.filter(p => p != post)
@@ -41,6 +40,10 @@ export class PostsComponent implements OnInit {
       this.posts = posts.sort((a,b) => parseInt(a.id) - parseInt(b.id))
 
     })
+
+  }*/
+
+  show_comments(){
 
   }
 
@@ -59,6 +62,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get_products()
   }
 
 }

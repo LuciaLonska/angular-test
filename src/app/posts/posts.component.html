@@ -13,13 +13,9 @@
     </div>
     <p>{{post.body}}</p>
     <div class="container">
-      <div class="comments"><a href="#" (click)="download_comments(post.id)">Comments</a></div>
+      <div class="comments"><app-comments-btn></app-comments-btn></div>
       <div class="ok-btn"><a href="#" class="hidden" (click)="update_post(post.id, post.body, post.title )">OK</a></div>
     </div>
-    <div class="comments" (click)="show_comments()">
-      <ul *ngFor="let comment of post.comments">
-        <li>{{comment}}</li>
-      </ul>
-    </div>
+    <app-comments-toggle></app-comments-toggle>
   </div>
 </div>
