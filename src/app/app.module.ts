@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { PostsComponent } from './posts/posts.component';
+import { PostsComponent } from './post-master/post/posts.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
-import { ComentsComponent } from './posts/coments/comments-btn/comments-btn.component';
+import { PostMasterComponent } from './post-master/post-master.component';
+import { CommentsComponent } from './post-master/post/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ComentsComponent } from './posts/coments/comments-btn/comments-btn.comp
     PostsComponent,
     BlogComponent,
     ContactComponent,
-    ComentsComponent,
+    CommentsComponent,
+    PostMasterComponent,
   ],
 
   imports: [
