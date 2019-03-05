@@ -17,19 +17,7 @@ export class ComentsComponent implements OnInit {
     this.httpClient = httpClient
   }
 
-  download_comments(id:string){
-    this.httpClient
-    .get(this.baseUrl + '/posts/' + id + '/comments')
-    .subscribe((response: any[])=>{
-      const post = this.posts.find(p => p.id == id)
-      const updatedPost = new Post(post.userId,post.id,post.title,post.body, ['cffgh', 'jhsgaxh', 'hshh'])
-      const posts =  this.posts.filter(p => p != post)
-            posts.push(updatedPost)
-      this.posts = posts.sort((a,b) => parseInt(a.id) - parseInt(b.id))
 
-    })
-
-  }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from './post.model';
-import { HttpClient } from '@angular/common/http';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -11,25 +11,25 @@ export class PostsComponent implements OnInit {
 
   baseUrl: string = 'https://jsonplaceholder.typicode.com'
   posts: Post[] = [];
-  httpClient: HttpClient = null;
+  postsService: PostsService = null;
 
-  constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient
+  constructor(postsService: PostsService ) {
+    this.postsService = postsService
   }
 
   delete_post(postId: string){
-     this.httpClient
-     .delete(this.baseUrl + '/posts/' + postId)
+    this.postsService.deletePost(postId)
     .subscribe((response: any) => {
-      this.posts = this.posts.filter((r) => {r.id != postId})
-    })
-  }
+     this.posts = this.posts.filter((r) => {r.id != postId})
+   })
+ }
 
   update_post(id:string, body:string, title:string){
     console.log('POST WAS EDITED')
   }
 
-  /*download_comments(id:string){
+
+  download_comments(id:string){
     this.httpClient
     .get(this.baseUrl + '/posts/' + id + '/comments')
     .subscribe((response: any[])=>{
@@ -41,28 +41,23 @@ export class PostsComponent implements OnInit {
 
     })
 
-  }*/
+  }
 
   show_comments(){
 
   }
 
 
-  get_products(){
-    this.httpClient
-    .get(this.baseUrl + '/posts')
-    .subscribe((jsondata: any[])=>{
-      const post: Post[] =
-        jsondata
-        .slice(0,10)
-        .map(element => {return new Post(element.userId, element.id, element.title, element.body, []);})
-
-      this.posts = post;
+  get_posts(){
+    this.postsService
+    .getPosts(0, 10)
+    .subscribe( posts: Post[] => {
+      this.posts = posts;
     });
   }
 
   ngOnInit() {
-    this.get_products()
+    this.get_posts()
   }
 
 }
