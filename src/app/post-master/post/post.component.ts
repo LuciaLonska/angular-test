@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Post} from './post.model';
 import {PostsService} from '../posts.service';
 import {Comment} from './comments/comment.model';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css']
 })
 export class PostsComponent implements OnInit {
 
@@ -14,6 +14,9 @@ export class PostsComponent implements OnInit {
   posts: Post[] = [];
   postsService: PostsService = null;
   private toggle : boolean = false;
+  commentsVisible: boolean = false;
+
+  @Output() commentClick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(postsService: PostsService) {
     this.postsService = postsService
@@ -40,7 +43,7 @@ export class PostsComponent implements OnInit {
     .subscribe((response: Comment[])=>{
       let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
       this.posts[indexToUpdate].comments = response
-      this.toggle != this.toggle;
+      /*this.commentsVisible = !this.commentsVisible;*/
     })
   }
 

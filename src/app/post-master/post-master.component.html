@@ -1,3 +1,3 @@
-<div class="container-fluid">
-  <app-posts></app-posts>
+<div (commentClick)="getComments()" class="container-fluid">
+  <app-post *ngFor="let post of posts" [post]="post" (onLinkClick)></app-post>
 </div>

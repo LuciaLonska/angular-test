@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Comment} from './comment.model';
 
 @Component({
@@ -8,9 +8,8 @@ import {Comment} from './comment.model';
 })
 export class CommentsComponent implements OnInit {
 
-  commentsVisible: boolean = false;
-
   @Input() comments: Comment[];
+  @Output() onLinkClick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 

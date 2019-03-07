@@ -1,4 +1,5 @@
-<div class="card" *ngFor="let post of posts">
+
+<div class="card">
   <div class="container">
     <div class="heading">
       <h1>{{post.title}}</h1>
@@ -15,7 +16,8 @@
     <div class="ok-btn"><a href="#" class="hidden" (click)="update_post(post.id, post.body, post.title )">OK</a></div>
   </div>
   <div class="comments">
-    <div ng-show="!commentsVisible"><a href="#" (click)="getComments(post.id)">Comments</a></div>
-    <app-comments [comments]="post.comments" ng-show="commentsVisible"></app-comments>
+    <app-comments (onLinkClick)="commentClick.emit()" [comments]="post.comments"></app-comments>
   </div>
 </div>
+
+<post *ngFor="let post of posts" [post]="post" (onLinkClick)></post>
