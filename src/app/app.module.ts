@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { PostsComponent } from './post-master/post/post.component';
+import { PostComponent } from './post-master/post/post.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BlogComponent } from './blog/blog.component';
@@ -15,7 +15,7 @@ import { CommentsComponent } from './post-master/post/comments/comments.componen
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostsComponent,
+    PostComponent,
     BlogComponent,
     ContactComponent,
     CommentsComponent,

@@ -1,5 +1,5 @@
-<div (commentClick)="getComments()" class="container-fluid">
-  <app-post *ngFor="let post of posts" [post]="post" (onLinkClick)></app-post>
+<div  class="container-fluid">
+  <app-post *ngFor="let post of posts" [post]="post" (commentClick)="getComments()"></app-post>
 </div>
 
 <!--(onLinkClick)-->

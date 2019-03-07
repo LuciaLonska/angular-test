@@ -1,14 +1,15 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Post} from './post.model';
 import {PostsService} from '../posts.service';
 import {Comment} from './comments/comment.model';
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostsComponent implements OnInit {
+export class PostComponent implements OnInit {
 
   baseUrl: string = 'https://jsonplaceholder.typicode.com'
   posts: Post[] = [];
@@ -17,6 +18,7 @@ export class PostsComponent implements OnInit {
   commentsVisible: boolean = false;
 
   @Output() commentClick: EventEmitter<void> = new EventEmitter<void>();
+  @Input() post: Post;
 
   constructor(postsService: PostsService) {
     this.postsService = postsService
