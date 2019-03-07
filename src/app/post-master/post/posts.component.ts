@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from './post.model';
 import {PostsService} from '../posts.service';
+import {Comment} from './comments/comment.model';
 
 @Component({
   selector: 'app-posts',
@@ -18,7 +19,8 @@ export class PostsComponent implements OnInit {
   }
 
   delete_post(postId: string) {
-    this.postsService.deletePost(postId)
+    this.postsService
+    .deletePost(postId)
     .subscribe((response: any) => {
       this.posts = this.posts.filter((r) => {
         return r.id != postId
@@ -31,20 +33,25 @@ export class PostsComponent implements OnInit {
   }
 
 
-  download_comments(id: string) {
-    console.log('download comments')
-  }
+  getComments(postId: string) {
+    this.postsService
+    .getComments(postId)
+    .subscribe((response: Comment[])=>{
 
-  show_comments() {
-    console.log('show comments')
-  }
+      let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
 
+
+
+      this.posts[indexToUpdate].comments = response
+
+    })
+  }
 
   get_posts() {
     this.postsService
     .getPosts(0, 10)
-    .subscribe((posts: Post[]) => {
-      this.posts = posts;
+    .subscribe((response: Post[]) => {
+      this.posts = response;
     });
   }
 

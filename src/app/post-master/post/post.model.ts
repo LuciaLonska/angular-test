@@ -4,9 +4,9 @@ export class Post {
     public id: string;
     public title: string;
     public body: string;
-    public comments: string[]
+    public comments: Comment[]
 
-    constructor(userId: string, id: string, title: string, body: string, comments:string[]){
+    constructor(userId: string, id: string, title: string, body: string, comments:Comment[]){
       this.userId = userId;
       this.id = id;
       this.title = title;

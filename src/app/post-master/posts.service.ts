@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Post} from './post/post.model';
+import {Comment} from './post/comments/comment.model';
 import {map} from 'rxjs/operators';
+import { element } from 'protractor';
 
 
 @Injectable({
@@ -22,8 +24,7 @@ export class PostsService {
   }
 
   getPosts(from: number, to: number) {
-    return this.httpClient
-    .get(this.baseUrl + '/posts')
+    return this.httpClient.get(this.baseUrl + '/posts')
     .pipe(
       map((jsondata: any[]) =>
         jsondata
@@ -34,5 +35,19 @@ export class PostsService {
       )
     )
   };
+
+  getComments(postId: string) {
+    return this.httpClient.get(this.baseUrl + '/posts/' + postId + '/comments')
+    .pipe(
+      map((jsondata: any[]) =>
+        jsondata
+        .map(element =>{
+          return new Comment('Fero','koment1245')
+        })
+      )
+    )
+  };
+
+
 
 }

@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private comments: Comment[]) { }
 
   ngOnInit() {
+
   }
 
 }
