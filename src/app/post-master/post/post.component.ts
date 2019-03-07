@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Post} from './post.model';
 import {PostsService} from '../posts.service';
-import {Comment} from './comments/comment.model';
+
 import { post } from 'selenium-webdriver/http';
 
 @Component({
@@ -39,26 +39,10 @@ export class PostComponent implements OnInit {
   }
 
 
-  getComments(postId: string) {
-    this.postsService
-    .getComments(postId)
-    .subscribe((response: Comment[])=>{
-      let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
-      this.posts[indexToUpdate].comments = response
-      /*this.commentsVisible = !this.commentsVisible;*/
-    })
-  }
 
-  get_posts() {
-    this.postsService
-    .getPosts(0, 10)
-    .subscribe((response: Post[]) => {
-      this.posts = response;
-    });
-  }
+
 
   ngOnInit() {
-    this.get_posts()
   }
 
 }

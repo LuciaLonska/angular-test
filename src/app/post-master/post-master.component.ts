@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Post} from './post/post.model';
 import {PostsService} from './posts.service';
+import {Comment} from './post/comments/comment.model';
 
 
 @Component({
@@ -10,11 +11,24 @@ import {PostsService} from './posts.service';
 })
 export class PostMasterComponent implements OnInit {
 
-  postsService: PostsService = null;
+
 
   @Input() posts: Post[] = [];
 
-  constructor() { }
+  constructor(private postsService: PostsService) {
+
+   }
+
+   getComments(postId: string) {
+    this.postsService
+    .getComments(postId)
+    .subscribe((response: Comment[])=>{
+      let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
+      this.posts[indexToUpdate].comments = response
+      /*this.commentsVisible = !this.commentsVisible;*/
+    })
+  }
+
 
   get_posts() {
     this.postsService
