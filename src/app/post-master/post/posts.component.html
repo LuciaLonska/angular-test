@@ -12,10 +12,10 @@
   </div>
   <p>{{post.body}}</p>
   <div class="container">
-    <div ><a href="#" (click)="getComments(post.id)">Comments</a></div>
     <div class="ok-btn"><a href="#" class="hidden" (click)="update_post(post.id, post.body, post.title )">OK</a></div>
   </div>
   <div class="comments">
-    <app-comments></app-comments>
+    <div ng-show="!commentsVisible"><a href="#" (click)="getComments(post.id)">Comments</a></div>
+    <app-comments [comments]="post.comments" ng-show="commentsVisible"></app-comments>
   </div>
 </div>

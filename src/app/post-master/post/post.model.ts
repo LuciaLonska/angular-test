@@ -1,3 +1,4 @@
+import {Comment} from './comments/comment.model';
 
 export class Post {
     public userId: string;

@@ -39,11 +39,16 @@ export class PostsService {
   getComments(postId: string) {
     return this.httpClient.get(this.baseUrl + '/posts/' + postId + '/comments')
     .pipe(
-      map((jsondata: any[]) =>
+      map((jsondata: any[]) =>{
         jsondata
-        .map(element =>{
+        return [
+          new Comment('Fero', 'koment124'),
+          new Comment('Martin', 'koment456'),
+          new Comment('Jano', 'koment789')
+        ]}
+        /*.map(element =>{
           return new Comment('Fero','koment1245')
-        })
+        })*/
       )
     )
   };

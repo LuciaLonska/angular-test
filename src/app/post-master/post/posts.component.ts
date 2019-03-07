@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   baseUrl: string = 'https://jsonplaceholder.typicode.com'
   posts: Post[] = [];
   postsService: PostsService = null;
+  private toggle : boolean = false;
 
   constructor(postsService: PostsService) {
     this.postsService = postsService
@@ -37,13 +38,9 @@ export class PostsComponent implements OnInit {
     this.postsService
     .getComments(postId)
     .subscribe((response: Comment[])=>{
-
       let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
-
-
-
       this.posts[indexToUpdate].comments = response
-
+      this.toggle != this.toggle;
     })
   }
 
