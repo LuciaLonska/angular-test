@@ -1,7 +1,9 @@
 <div>
-  <span class="btn btn-primary" (click)="onLinkClick.emit()">Open/Close Comments</span>
-  <ul *ngFor="let comment of comments">
-    <li>name: {{comment.author}}</li>
-    <li>name: {{comment.text}}</li>
-  </ul>
+  <span class="btn btn-primary" (click)="toggleComments()" >Open/Close Comments</span>
+  <ng-container *ngIf = "!hidden">
+    <ul *ngFor="let comment of comments" >
+      <li>name: {{comment.author}}</li>
+      <li>name: {{comment.text}}</li>
+    </ul>
+  </ng-container>
 </div>

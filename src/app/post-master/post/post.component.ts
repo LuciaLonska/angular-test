@@ -32,15 +32,12 @@ export class PostComponent implements OnInit {
         return r.id != postId
       })
     })
+    console.log("clicked");
   }
 
   update_post(id: string, body: string, title: string) {
     console.log('POST WAS EDITED')
   }
-
-
-
-
 
   ngOnInit() {
   }
