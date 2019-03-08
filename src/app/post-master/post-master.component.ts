@@ -11,7 +11,7 @@ import {Comment} from './post/comments/comment.model';
 })
 export class PostMasterComponent implements OnInit {
 
-
+  commentsVisible: boolean = false;
 
   @Input() posts: Post[] = [];
 
@@ -24,7 +24,10 @@ export class PostMasterComponent implements OnInit {
     .getComments(postId)
     .subscribe((response: Comment[])=>{
       let indexToUpdate = this.posts.findIndex((element: Post)=>{return element.id === postId })
-      this.posts[indexToUpdate].comments = response
+      console.log(this.posts, indexToUpdate, postId)
+      if (this.posts[indexToUpdate] != null) {
+        this.posts[indexToUpdate].comments = response
+      }
       /*this.commentsVisible = !this.commentsVisible;*/
     })
   }
@@ -35,6 +38,7 @@ export class PostMasterComponent implements OnInit {
     .getPosts(0, 10)
     .subscribe((response: Post[]) => {
       this.posts = response;
+      console.log(this.posts)
     });
   }
 
